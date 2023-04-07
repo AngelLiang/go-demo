@@ -1,0 +1,49 @@
+basePath: /
+info:
+  contact: {}
+  description: This is a sample API
+  title: MyAPI API
+  version: "1.0"
+paths:
+  /api/protected:
+    get:
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - BasicAuth: []
+      summary: This is a protected API.
+      tags:
+      - Protected
+  /api/secure:
+    get:
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: This is a secure API.
+      tags:
+      - Secure
+  /api/unsecure:
+    get:
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: This is an unsecure API.
+      tags:
+      - Unsecure
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
