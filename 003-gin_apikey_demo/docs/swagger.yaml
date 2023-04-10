@@ -1,0 +1,25 @@
+info:
+  contact: {}
+paths:
+  /checkApiKey:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: 检查 ApiKey
+      tags:
+      - 登录认证
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

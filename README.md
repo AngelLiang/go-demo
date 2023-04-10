@@ -14,3 +14,4 @@ go语言学习示例
 |------|------------------|--------------------------------------|
 | 001  | gin_swagger_demo | 使用gin和swagger搭建http接口和文档示例 |
 | 002  | gin_auth_demo    | gin使用baseAuth示例                    |
+| 003  | gin_apikey_demo  | gin从头部获取APIKEY示例                |
