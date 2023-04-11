@@ -1,0 +1,28 @@
+info:
+  contact: {}
+paths:
+  /welcome:
+    get:
+      consumes:
+      - application/json
+      description: 示例 URL：/welcome?firstname=Jane&lastname=Doe
+      parameters:
+      - description: 名称
+        in: query
+        name: firstname
+        type: string
+      - description: 姓氏
+        in: query
+        name: lastname
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 查询字符串参数
+      tags:
+      - default
+swagger: "2.0"
