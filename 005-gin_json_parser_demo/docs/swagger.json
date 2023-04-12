@@ -1,0 +1,55 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/loginWithJSON": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录认证"
+                ],
+                "summary": "用户登录",
+                "parameters": [
+                    {
+                        "description": "用户名",
+                        "name": "string",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/main.LoginUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.LoginUser": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "Password字段表示登录密码\nbind:\"required\"表示这个字段是必需的，需要在绑定时提供值\njson:\"password\"表示在JSON序列化/反序列化时使用的键名",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Username字段表示登录用户名\nbind:\"required\"表示这个字段是必需的，需要在绑定时提供值\njson:\"username\"表示在JSON序列化/反序列化时使用的键名",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

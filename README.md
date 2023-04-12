@@ -16,3 +16,5 @@ go语言学习示例
 | 002  | gin_auth_demo        | gin使用baseAuth示例                    |
 | 003  | gin_apikey_demo      | gin从HTTP Header获取APIKEY示例         |
 | 004  | gin_querystring_demo | gin在querystring传参并添加到文档示例   |
+| 005  | gin_json_parser_demo | gin解析json                            |
+
