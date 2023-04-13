@@ -1,0 +1,22 @@
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      responses: {}
+      summary: index
+  /panic:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 处理 panic
+      tags:
+      - default
+swagger: "2.0"
