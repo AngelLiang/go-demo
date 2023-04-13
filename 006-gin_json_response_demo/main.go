@@ -18,6 +18,19 @@ type LoginUser struct {
 }
 
 
+type JSONResult struct {
+	// 业务码
+    Code    int          `json:"code" `
+	// 响应信息
+    Message string       `json:"message"`
+	// 响应数据
+    Data    interface{}  `json:"data"`
+}
+
+type LoginResponse struct {
+	Token string `json:"token"`
+}
+
 // @Summary 用户登录
 // @Schemes
 // @Description 
@@ -27,6 +40,7 @@ type LoginUser struct {
 // @Success 200 {string} ok
 // @Router /login [post]
 // @Param string body LoginUser false "用户名"
+// @success 200 {object} JSONResult{data=LoginResponse} "响应"
 func Login(c *gin.Context) {
 	var login LoginUser
 

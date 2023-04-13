@@ -40,9 +40,21 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "响应",
                         "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/main.JSONResult"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/main.LoginResponse"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -50,6 +62,30 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "main.JSONResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "业务码",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "响应数据"
+                },
+                "message": {
+                    "description": "响应信息",
+                    "type": "string"
+                }
+            }
+        },
+        "main.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
         "main.LoginUser": {
             "type": "object",
             "properties": {

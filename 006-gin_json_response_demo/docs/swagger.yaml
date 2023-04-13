@@ -1,4 +1,20 @@
 definitions:
+  main.JSONResult:
+    properties:
+      code:
+        description: 业务码
+        type: integer
+      data:
+        description: 响应数据
+      message:
+        description: 响应信息
+        type: string
+    type: object
+  main.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
   main.LoginUser:
     properties:
       password:
@@ -25,9 +41,14 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: 响应
           schema:
-            type: string
+            allOf:
+            - $ref: '#/definitions/main.JSONResult'
+            - properties:
+                data:
+                  $ref: '#/definitions/main.LoginResponse'
+              type: object
       summary: 用户登录
       tags:
       - 登录认证
