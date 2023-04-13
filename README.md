@@ -19,3 +19,4 @@ go语言学习示例
 | 005  | gin_json_parser_demo   | gin解析json                            |
 | 006  | gin_json_response_demo | gin响应json                            |
 | 007  | gin_logger_demo        | gin使用日志功能                        |
+| 008  | godotenv_demo          | godotenv使用示例                       |
