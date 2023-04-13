@@ -1,12 +1,28 @@
 package main
 
 import (
+	"fmt"
    "github.com/gin-gonic/gin"
    docs "gin_apikey_demo/docs"  // NOTE: docs导入的包要和go.mod的module一样
    swaggerfiles "github.com/swaggo/files"
    ginSwagger "github.com/swaggo/gin-swagger"
    "net/http"
 )
+
+// authMiddleware中间件会检查每个请求的身份验证信息是否正确
+func AuthMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		apikey := c.Request.Header.Get("Authorization")
+		fmt.Printf("apikey:%s\r\n", apikey)
+		if (apikey != "123456") {
+			c.AbortWithStatus(http.StatusUnauthorized)
+			return
+		}
+		// 继续处理请求
+		c.Next()
+	}
+}
+
 
 // @Summary 检查 ApiKey
 // @Schemes
@@ -33,7 +49,7 @@ func checkApiKey(g *gin.Context)  {
 func main()  {
    r := gin.Default()
    docs.SwaggerInfo.BasePath = ""
-   r.GET("/checkApiKey", checkApiKey)
+   r.GET("/checkApiKey", AuthMiddleware(), checkApiKey)
    r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
    r.Run(":8080")
 }
