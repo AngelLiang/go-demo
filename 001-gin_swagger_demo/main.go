@@ -24,6 +24,10 @@ func Helloworld(g *gin.Context)  {
 
 func main()  {
    r := gin.Default()
+
+   docs.SwaggerInfo.Title = "接口文档"
+   docs.SwaggerInfo.Description = "接口文档"
+   docs.SwaggerInfo.Version = "1.0"
    docs.SwaggerInfo.BasePath = "/api/v1"
    v1 := r.Group("/api/v1")
    {
