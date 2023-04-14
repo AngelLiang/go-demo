@@ -14,12 +14,12 @@ type LoginUser struct {
 	// Username字段表示登录用户名
 	// bind:"required"表示这个字段是必需的，需要在绑定时提供值
 	// json:"username"表示在JSON序列化/反序列化时使用的键名
-	Username string `bind:"required" json:"username"`
+	Username string `binding:"required" json:"username"`
 	
 	// Password字段表示登录密码
 	// bind:"required"表示这个字段是必需的，需要在绑定时提供值
 	// json:"password"表示在JSON序列化/反序列化时使用的键名
-	Password string `bind:"required" json:"password"`
+	Password string `binding:"required" json:"password"`
 }
 
 
