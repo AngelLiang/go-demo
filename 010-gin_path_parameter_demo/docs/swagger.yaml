@@ -1,0 +1,51 @@
+info:
+  contact: {}
+paths:
+  /user/{name}:
+    get:
+      consumes:
+      - application/json
+      description: 此 handler 将匹配 /user/john 但不会匹配 /user/ 或者 /user
+      parameters:
+      - description: 姓名
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Hello
+      tags:
+      - default
+  /user/{name}/{action}:
+    get:
+      consumes:
+      - application/json
+      description: 此 handler 将匹配 /user/john/ 和 /user/john/send。如果没有其他路由匹配 /user/john，它将重定向到
+        /user/john/
+      parameters:
+      - description: 姓名
+        in: path
+        name: name
+        required: true
+        type: string
+      - description: 动作
+        in: path
+        name: action
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Action
+      tags:
+      - default
+swagger: "2.0"
