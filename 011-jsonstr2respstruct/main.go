@@ -9,24 +9,25 @@ import (
 	// "net/url"
 )
 
-const GithubUserUrl = "https://api.github.com/user"
+const PostUrl = "https://jsonplaceholder.typicode.com/posts/1"
 
-// type GithubUserUrlResp struct {
-//     Code int `json:"current_user_url"`
-//     Msg string `json:"msg"`
-//     // Data CreateTXData `json:"data"`
-// }
-
-type GithubUserUrlResp struct {
-    Message string `json:"message"`
-    DocumentationUrl string `json:"documentation_url"`
-    // Data CreateTXData `json:"data"`
+// {
+// 	"userId": 1,
+// 	"id": 1,
+// 	"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+// 	"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+//   }
+type PostUrlResp struct {
+    UserId int `json:"userId"`
+    Id int `json:"id"`
+    Title string `json:"title"`
+    Body string `json:"body"`
 }
 
 
 // json 转结构体
-func BuildGithubUserUrlResp(body []byte) (*GithubUserUrlResp, error){
-    var resp GithubUserUrlResp
+func BuildPostUrlResp(body []byte) (*PostUrlResp, error){
+    var resp PostUrlResp
     // err := json.NewDecoder(strings.NewReader(jsonStr)).Decode(&resp)
 	err := json.Unmarshal(body, &resp)
     if err != nil {
@@ -81,14 +82,14 @@ func main() {
 		"param2": "value2",
 	}
 
-	body, err := doGET(GithubUserUrl, params)
+	body, err := doGET(PostUrl, params)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
 	// fmt.Println("body:", body)
 
-	resp, err := BuildGithubUserUrlResp(body)
+	resp, err := BuildPostUrlResp(body)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
