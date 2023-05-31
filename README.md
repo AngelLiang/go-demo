@@ -21,3 +21,8 @@ go语言学习示例
 | 007  | gin_logger_demo         | gin使用日志功能                        |
 | 008  | godotenv_demo           | godotenv使用示例                       |
 | 009  | gin_swagger_with_folder | gin 带api文件夹生成 swagger 接口文档   |
+| 010  | gin_path_parameter_demo | gin 通过path传参示例                   |
+| 011  | jsonstr2respstruct      | json字符串转结构体示例                 |
+| 012  | gorountine_demo         | 使用gorountine示例                     |
+| 013  | gin_httptest            | gin 使用测试示例                       |
+| 014  | cron_demo               | cron定时任务工具示例                   |
