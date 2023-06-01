@@ -17,7 +17,7 @@ const PostUrl = "https://jsonplaceholder.typicode.com/posts/1"
 // 	"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
 // 	"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
 //   }
-type PostUrlResp struct {
+type PostJson struct {
     UserId int `json:"userId"`
     Id int `json:"id"`
     Title string `json:"title"`
@@ -26,14 +26,14 @@ type PostUrlResp struct {
 
 
 // json 转结构体
-func BuildPostUrlResp(body []byte) (*PostUrlResp, error){
-    var resp PostUrlResp
+func BuildPostJson(body []byte) (*PostJson, error){
+    var res PostJson
     // err := json.NewDecoder(strings.NewReader(jsonStr)).Decode(&resp)
-	err := json.Unmarshal(body, &resp)
+	err := json.Unmarshal(body, &res)
     if err != nil {
         return nil, err
     }
-    return &resp, nil
+    return &res, nil
 }
 
 
@@ -46,14 +46,14 @@ func BuildHttpQuery(params map[string]string) (paramStr string) {
 	return paramStr
 }
 
-// doGET 发起一个HTTP请求，使用GET方法
+// DoGET 发起一个HTTP请求，使用GET方法
 // 参数:
 //   url: HTTP请求的URL
 //   params: querystring的参数，以键值对形式传递
 // 返回值:
 //   body: HTTP响应的内容，类型为[]byte
 //   err: 发起请求过程中的错误，类型为error
-func doGET(url string, params map[string]string) ([]byte, error) {
+func DoGET(url string, params map[string]string) ([]byte, error) {
 	// 构建完整的URL
 	requestURL := url + "?"
 	requestURL += BuildHttpQuery(params)
@@ -61,14 +61,14 @@ func doGET(url string, params map[string]string) ([]byte, error) {
 	// 发起GET请求
 	response, err := http.Get(requestURL)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 	defer response.Body.Close()
 
 	// 读取响应的内容
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		return []byte{}, err
+		return nil, err
 	}
 
 	return body, nil
@@ -82,14 +82,14 @@ func main() {
 		"param2": "value2",
 	}
 
-	body, err := doGET(PostUrl, params)
+	body, err := DoGET(PostUrl, params)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
 	// fmt.Println("body:", body)
 
-	resp, err := BuildPostUrlResp(body)
+	resp, err := BuildPostJson(body)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
