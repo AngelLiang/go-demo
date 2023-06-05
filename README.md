@@ -26,3 +26,6 @@ go语言学习示例
 | 012  | gorountine_demo         | 使用gorountine示例                     |
 | 013  | gin_httptest            | gin 使用测试示例                       |
 | 014  | cron_demo               | cron定时任务工具示例                   |
+| 015  | encryption_demo         | 字段加密示例                           |
+| 016  | gin_custom_validation   | 自定义校验示例                         |
+| 017  | gin_upload_file         | 上传文件示例                           |
