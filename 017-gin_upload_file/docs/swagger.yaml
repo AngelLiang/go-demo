@@ -1,0 +1,29 @@
+info:
+  contact: {}
+paths:
+  /upload:
+    post:
+      consumes:
+      - application/json
+      description: 上传文件接口
+      parameters:
+      - description: file
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: name
+        in: formData
+        name: string
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 上传文件接口
+      tags:
+      - example
+swagger: "2.0"
