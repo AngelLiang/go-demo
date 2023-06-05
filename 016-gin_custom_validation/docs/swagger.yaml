@@ -1,0 +1,25 @@
+info:
+  contact: {}
+paths:
+  /bookable:
+    get:
+      consumes:
+      - application/json
+      description: bookable
+      parameters:
+      - description: 判断输入的日期是否是今天之后的日期 格式 2006-01-02
+        in: query
+        name: afterToday
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: getBookable
+      tags:
+      - example
+swagger: "2.0"
